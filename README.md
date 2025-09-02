@@ -1,10 +1,10 @@
 # Code for A Split-Group Permutation F-Test for Robust ANOVA under Heteroscedasticity
 
-This repository contains the R scripts necessary to reproduce all simulations, analyses, and figures presented in the manuscript, A Split-Group Permutation F-Test for Robust ANOVA under Heteroscedasticity by [Your Name], (Year).
+This repository contains the R scripts necessary to reproduce all simulations, analyses, and figures presented in the manuscript, A Split-Group Permutation F-Test for Robust ANOVA under Heteroscedasticity by M.S, (2025).
 
 ## Description
 
-This research introduces and evaluates the Permutation Split-Group F-Test (`Perm F_ws`), a novel non-parametric test for comparing k=2 group means under variance heterogeneity (the Behrens-Fisher problem). The core finding is that the test's validity is dependent on sample size; it is anti-conservative in small samples but becomes a valid, powerful, and theoretically exact alternative to Welch's ANOVA in moderate-to-large samples.
+This research introduces and evaluates the Permutation Split-Group F-Test (`Perm F_ws`), a novel non-parametric test for comparing k>=2 group means under variance heterogeneity (the Behrens-Fisher problem). The core finding is that the test's validity is dependent on sample size; it is anti-conservative in small samples but becomes a valid, powerful, and theoretically exact alternative to Welch's ANOVA in moderate-to-large samples.
 
 This repository provides the code to replicate the simulation studies and the real-data applications that support these conclusions.
 

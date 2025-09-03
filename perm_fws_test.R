@@ -2,27 +2,19 @@
 #
 #    Permutation Split-Group F-Test (Perm F_ws)
 #    A standalone R function for the method described in:
-#    Salehi, M. (2025). "A Split-Group Permutation F-Test..."
+#    M.S (2025). "A Split-Group Permutation F-Test for Robust ANOVA under Heteroscedasticity"
 #
 # ==============================================================================
 
-
 # ===================================================================================
 #  CORE STATISTIC FUNCTION
-#  This version is written in Base R to be memory-stable and dependency-free.
+#  This version uses Base R for memory stability.
 # ===================================================================================
 
-#' Calculate the F_ws Statistic
-#'
-#' @description
-#' An internal helper function to compute the bias-corrected, weighted
-#' between-group sum of squares statistic.
-#'
-#' @param data A data.frame or tibble with two columns:
-#'             'observation' (numeric) and 'group' (factor).
-#' @return The numeric value of the F_ws statistic. Returns NA if any
-#'         subgroup has n <= 3.
-#'
+# An internal helper function to compute the bias-corrected, weighted
+# between-group sum of squares statistic.
+# INPUT: A data.frame or tibble with two columns: 'observation' and 'group'.
+# OUTPUT: The numeric value of the F_ws statistic.
 calculate_fws_statistic <- function(data) {
   data$subgroup <- ave(1:nrow(data), data$group, FUN = function(x) sample(rep(1:2, length.out = length(x))))
   
@@ -73,25 +65,8 @@ calculate_fws_statistic <- function(data) {
 #  MAIN PUBLIC FUNCTION
 # ==============================================================================
 
-#' Permutation Split-Group F-Test for Robust ANOVA
-#'
-#' @description
-#' Performs a robust, permutation-based F-test for comparing k >= 2 group
-#' means under variance heterogeneity (the Behrens-Fisher problem).
-#' The method uses data-splitting within each group to construct a
-#' Welch-type statistic.
-#'
-#' @param data A data.frame or tibble with two columns:
-#'             'observation' (numeric) and 'group' (factor).
-#' @param perms An integer specifying the number of permutations to perform
-#'              for generating the null distribution. Defaults to 999.
-#'
-#' @return A list containing the following components:
-#'   \item{p.value}{The calculated permutation p-value.}
-#'   \item{statistic}{The observed test statistic T_obs.}
-#'   \item{permutations}{The number of permutations used.}
-#'
-#' @export
+# Performs a robust, permutation-based F-test for comparing k >= 2 group
+# means under variance heterogeneity (the Behrens-Fisher problem).
 perm_fws_test <- function(data, perms = 999) {
   
   # --- Input validation ---
@@ -171,4 +146,5 @@ if (sys.nframe() == 0) {
   cat("Observed Statistic:", test_result$statistic, "\n")
   cat("P-value:", test_result$p.value, "\n")
   
+
 }

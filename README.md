@@ -17,6 +17,7 @@ This repository contains three primary R scripts
 2.  `simulation_addendum_weights.R` This is a smaller, targeted simulation script that generates the data for the Weight Instability Plot (Figure 4 in the manuscript). It visualizes the distribution of the inverse-variance weights for small (`n=20`) vs. moderate (`n=50`) sample sizes to provide evidence for the source of the small-sample instability.
 
 3.  `perm_fws_test.R` This is a clean, well-commented, standalone implementation of our proposed statistical test. It contains the core `perm_fws_test()` function and a working example. This script is provided to allow other researchers to easily apply our method to their own data.
+4. `run_power_surface_simulation.R`: An addendum script that runs a targeted simulation to generate the data for the "Power Surface" plot (Figure 5 in the manuscript). This provides a high-resolution map of the test's performance across various sample sizes and effect sizes.
 
 ## System Requirements
 

@@ -43,7 +43,6 @@ plot_data <- bind_rows(
   tibble(weight = as.numeric(n50_weights), n = "n=50")
 ) %>% filter(!is.na(weight))
 
-# --- CORRECTED CODE to Generate Weight Instability Plot ---
 # (with 'linewidth' aesthetic to remove the warning)
 
 weight_plot <- ggplot(plot_data, aes(x = weight, fill = n)) +
@@ -64,4 +63,5 @@ weight_plot <- ggplot(plot_data, aes(x = weight, fill = n)) +
              linetype="dashed", color="red", linewidth=1)
   
 print(weight_plot)
+
 ggsave("plot_weight_instability.png", plot = weight_plot)

@@ -1,6 +1,7 @@
 # ==============================================================================
 #
-#    R Script for Simulation & Analysis for the F_ws Paper
+#    R Script for Simulation & Analysis for the F_ws 
+#    "A Split-Group Permutation F-Test for Robust ANOVA under Heteroscedasticity"
 #    FINAL VERSION: Includes Main Study + P-Value Accuracy Deep Dive
 #
 # ==============================================================================
@@ -53,8 +54,7 @@ generate_data <- function(k, n_per_group, means, sds) {
 }
 
 # ===================================================================================
-#  FINAL, HARDENED, AND DEBUGGED VERSION of the CORE STATISTIC FUNCTION
-#  This version uses Base R for memory stability AND fixes the column naming bug.
+#  #  This  uses Base R for memory stability AND fixes the column naming bug.
 # ===================================================================================
 
 calculate_fws_statistic <- function(data) {
@@ -73,7 +73,6 @@ calculate_fws_statistic <- function(data) {
   temp1 <- merge(means, vars, by = c("group", "subgroup"))
   subgroup_stats <- merge(temp1, ns, by = c("group", "subgroup"))
   # The aggregated columns will be named observation, observation.x, observation.y
-  # Let's rename them to what we expect.
   names(subgroup_stats) <- c("group", "subgroup", "mean", "var", "n")
   
   # Check the subgroup size constraint
@@ -107,7 +106,7 @@ calculate_fws_statistic <- function(data) {
   return(numerator)
 }
 # =========================================================
-#  NEW, MEMORY-EFFICIENT PERMUTATION FUNCTION
+#   MEMORY-EFFICIENT PERMUTATION FUNCTION
 # =========================================================
 
 perm_fws_test <- function(data) {
@@ -119,7 +118,6 @@ perm_fws_test <- function(data) {
   original_labels <- data$group
   perm_data <- data # This is the ONLY full copy we make.
 
-  # `replicate` is not very memory-efficient. A `for` loop is better here.
   # Pre-allocate the vector to store results.
   t_perm <- numeric(PERMUTATIONS)
 
@@ -169,7 +167,6 @@ run_scenario <- function(params) {
 # ==========================
 #  4. SETUP AND RUN STUDY
 # ==========================
-# NEW CODE (safer number of workers)
 # Let's manually set a lower number of cores to avoid maxing out RAM.
 # With 32 GB RAM (16 GB available), 3 or 4 is a much safer number.
 num_cores <- 2
@@ -293,4 +290,5 @@ plot3 <- ggplot(p_value_dist_data, aes(sample = p_value)) +
   theme_bw(base_size = 14)
 
 print(plot3)
+
 ggsave("plot_pvalue_accuracy_qq.png", plot = plot3, width = 12, height = 5, dpi = 300)

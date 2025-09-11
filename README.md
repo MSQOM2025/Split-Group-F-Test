@@ -1,4 +1,4 @@
-# Code for A Split-Group Permutation F-Test for Robust ANOVA under Heteroscedasticity
+# Code for The Price of Purity: On the Sample-Size Dependency of a Split-Group Permutation Test for the Behrens-Fisher Problem
 
 This repository contains the R scripts necessary to reproduce all simulations, analyses, and figures presented in the manuscript, A Split-Group Permutation F-Test for Robust ANOVA under Heteroscedasticity by M.S, (2025).
 

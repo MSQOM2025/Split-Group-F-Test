@@ -2,7 +2,7 @@
 #
 #    Permutation Split-Group F-Test (Perm F_ws)
 #    A standalone R function for the method described in:
-#    M.S (2025). "A Split-Group Permutation F-Test for Robust ANOVA under Heteroscedasticity"
+#    M.S (2025). "The Price of Purity: On the Sample-Size Dependency of a Split-Group Permutation Test for the Behrens-Fisher Problem"
 #
 # ==============================================================================
 
@@ -148,3 +148,4 @@ if (sys.nframe() == 0) {
   
 
 }
+
